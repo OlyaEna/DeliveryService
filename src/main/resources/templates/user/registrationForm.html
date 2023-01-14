@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <header th:insert="~{fragments/head :: head}"></header>
+    <title>Регистрация</title>
+</head>
+
+<body>
+<!-- Header-->
+<header th:insert="~{fragments/header :: header}"></header>
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h2 class="text-center">Регистрация</h2>
+            </div>
+            <div th:if="${param.success}">
+                <div class="alert alert-info">
+                    You have successfully registered our app!
+                </div>
+            </div>
+            <div class="card-body">
+                <form
+                        method="post"
+                        role="form"
+                        th:action="@{/registration/save}"
+                        th:object="${user}"  enctype="multipart/form-data">
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <input
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                placeholder="Введите email"
+                                th:field="*{email}"
+                                type="email"
+                        />
+                        <p th:errors="*{email}" class="text-danger"
+                           th:if="${#fields.hasErrors('email')}"></p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Пароль</label>
+                        <input
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                placeholder="Введите пароль"
+                                th:field="*{password}"
+                                type="password"
+                        />
+                        <p th:errors="*{password}" class="text-danger"
+                           th:if="${#fields.hasErrors('password')}"></p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Регистрация</button>
+                        <span>Уже зарегистрированы? <a th:href="@{/login}">Войти</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head>
+    <header th:insert="~{fragments/head :: head}"></header>
+    <title>Корзина</title>
+</head>
+<body>
+<header th:insert="~{fragments/header :: header}"></header>
+<!-- Page Content -->
+<div class="container">
+    <h1 class="mt-4 mb-3"> Корзина
+    </h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-9">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Продукт</th>
+                            <!--                            <th scope="col">Цена, руб. </th>-->
+                            <th scope="col">Количество</th>
+                            <th scope="col">Цена, руб.</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="car:${cart}">
+                            <td th:text="${car.type.name}"></td>
+                            <td th:text="${car.quantity}"></td>
+                            <td th:text="${car.totalPrice}"></td>
+
+                            <!--                            <td><a th:href="@{/delete/cart/{id}(id=${car.product.id}) }" class="btn btn-danger">Удалить</a></td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="card-title">Стоимость доставки, руб. </h5>
+
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 th:text="${deliveryCost}"></h5></li>
+                    </ul>
+                    <h2 class="card-title">Итоговая сумма, руб. </h2>
+
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 th:text="${order.cost}"></h5></li>
+                        <a th:href="@{/order}" class="btn btn-dark">Заказ</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

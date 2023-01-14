@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <header th:insert="~{fragments/head :: head}"></header>
+    <title>Заказ</title>
+</head>
+
+<body>
+<!-- Header-->
+<header th:insert="~{fragments/header :: header}"></header>
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">error</div>
+        </div>
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h2 class="text-center">Заказ</h2>
+            </div>
+            <div class="card-body">
+                <form
+                        method="post"
+                        role="form"
+                        th:action="@{/order}"
+                        th:object="${order}" enctype="multipart/form-data">
+
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Адрес</label>
+                        <input
+                                class="form-control"
+                                id="address"
+                                name="address"
+                                placeholder="Введите адрес"
+                                th:field="*{address}"
+                                type="text"
+                        />
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Имя</label>
+                        <input
+                                class="form-control"
+                                id="name"
+                                name="name"
+                                placeholder="Введите имя"
+                                th:field="*{name}"
+                                type="text"
+                        />
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Отпавить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
