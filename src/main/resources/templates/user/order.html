@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <header th:insert="~{fragments/head :: head}"></header>
-    <title>Заказ</title>
+    <title th:text = "#{order}"></title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
         </div>
         <div class="card shadow-sm">
             <div class="card-header">
-                <h2 class="text-center">Заказ</h2>
+                <h2 class="text-center" th:text = "#{order}"></h2>
             </div>
             <div class="card-body">
                 <form
@@ -26,7 +26,7 @@
 
 
                     <div class="form-group mb-3">
-                        <label class="form-label">Адрес</label>
+                        <label class="form-label" th:text = "#{address}"></label>
                         <input
                                 class="form-control"
                                 id="address"
@@ -38,7 +38,7 @@
                         <div class="alert alert-warning" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label">Имя</label>
+                        <label class="form-label" th:text = "#{name}"></label>
                         <input
                                 class="form-control"
                                 id="name"
@@ -49,7 +49,7 @@
                         />
                         <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
                         <div class="form-group">
-                            <button class="btn btn-primary" type="submit">Отпавить</button>
+                            <button class="btn btn-primary" type="submit" th:text = "#{submit}"></button>
                         </div>
                     </div>
                 </form>

@@ -15,6 +15,7 @@ import java.util.List;
 public class TypeController {
     private final TypeService typeService;
 
+//    @GetMapping(value = {"/", "/?lang=ru"})
     @GetMapping(value = {"/", "/?lang=ru"})
     public String types(Model model) {
         List<TypeDto> typeDto = typeService.showAllAvailable();
