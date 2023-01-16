@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.OrderDto;
 import com.example.demo.model.entity.Order;
 import com.example.demo.model.entity.OrderItem;
 import com.example.demo.model.entity.Type;
@@ -91,7 +92,7 @@ public class CartController {
     }
 
     @PostMapping("/order")
-    public String createOrder(@Valid Order orderFromItems, BindingResult bindingResult,
+    public String createOrder(@Valid OrderDto orderFromItems, BindingResult bindingResult,
                               Principal principal, @RequestParam("name") String name,
                               @RequestParam("address") String address) {
         if (bindingResult.hasErrors()) {
@@ -102,30 +103,7 @@ public class CartController {
         return "redirect:/";
     }
 
-    //
-//    @GetMapping("/delete/cart/{id}")
-//    public String deleteProductCart(@PathVariable Long id, Model model) {
-//
-//        List<OrderItem> items = new ArrayList<>();
-//
-//        for (OrderItem item : items) {
-//            if (item.getProduct().getId() != id) {
-//                items.add(item);
-//            }
-//        }
-//
-//        orderItems = items;
-//
-//        double sumTotal = 0;
-//        sumTotal = items.stream().mapToDouble(dt -> dt.getTotalPrice()).sum();
-//
-//        order.setTotalPrice(sumTotal);
-//        model.addAttribute("cart", orderItems);
-//        model.addAttribute("order", order);
-//
-//        return "user/user-cart";
-//    }
-//
+
     @GetMapping("/user/orders")
     public String showMyOrders(Model model, Principal principal) {
         User user = userService.findUserByEmail(principal.getName());
@@ -137,7 +115,7 @@ public class CartController {
 
     @GetMapping("/order-details/{id}")
     public String getOrderDetails(Model model, @PathVariable("id") Long id) {
-        Order selectedOrder = orderService.getOrderById(id);
+        OrderDto selectedOrder = orderService.getOrderById(id);
         model.addAttribute("selectedOrder", selectedOrder);
         return "user/order-details";
     }

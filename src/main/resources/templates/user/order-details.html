@@ -19,7 +19,7 @@
             <th th:text = "#{name}"></th>
             <th th:text = "#{address}"></th>
             <th>
-                <br th:text = "#{titleAndQuantityAndPrice}">
+                <br th:text = "#{quantityAndTitleAndPrice}">
             </th>
         </tr>
         </thead>
@@ -34,8 +34,8 @@
             <td>
                 <table>
                     <tr th:each="item : ${selectedOrder.orderItems}">
-                        <td th:text="${item.type.name}"></td>
                         <td th:text="${item.quantity}"></td>
+                        <td th:text="${item.type.name}"></td>
                         <td th:text="${item.type.price}"></td>
                     </tr>
                 </table>

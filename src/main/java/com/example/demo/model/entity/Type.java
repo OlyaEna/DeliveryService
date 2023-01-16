@@ -18,6 +18,7 @@ public class Type {
     private Long id;
     @Column(name = "type_name",length = 200)
     private String name;
+    private String name_ru;
     private double price;
     private char disabled;
 }

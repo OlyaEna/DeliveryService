@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <header th:insert="~{fragments/head :: head}"></header>
-    <title>Регистрация</title>
+    <title th:text = "#{singUp}"></title>
 </head>
 
 <body>
@@ -12,7 +12,7 @@
     <div class="row col-md-8 offset-md-2">
         <div class="card shadow-sm">
             <div class="card-header">
-                <h2 class="text-center">Регистрация</h2>
+                <h2 class="text-center" th:text = "#{singUp}"></h2>
             </div>
             <div th:if="${param.success}">
                 <div class="alert alert-info">
@@ -32,7 +32,7 @@
                                 class="form-control"
                                 id="email"
                                 name="email"
-                                placeholder="Введите email"
+                                placeholder="Enter your email"
                                 th:field="*{email}"
                                 type="email"
                         />
@@ -40,12 +40,12 @@
                            th:if="${#fields.hasErrors('email')}"></p>
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label">Пароль</label>
+                        <label class="form-label" th:text = "#{password}"></label>
                         <input
                                 class="form-control"
                                 id="password"
                                 name="password"
-                                placeholder="Введите пароль"
+                                placeholder="Enter your password"
                                 th:field="*{password}"
                                 type="password"
                         />
@@ -53,8 +53,8 @@
                            th:if="${#fields.hasErrors('password')}"></p>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Регистрация</button>
-                        <span>Уже зарегистрированы? <a th:href="@{/login}">Войти</a></span>
+                        <button class="btn btn-primary" type="submit" th:text = "#{singUp}"></button>
+                        <span> <a th:href="@{/login}" th:text = "#{haveAccount}"></a></span>
                     </div>
                 </form>
             </div>

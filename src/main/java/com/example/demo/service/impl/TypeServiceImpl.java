@@ -30,8 +30,8 @@ public class TypeServiceImpl implements TypeService {
             TypeDto typeDto = new TypeDto();
             typeDto.setId(type.getId());
             typeDto.setName(type.getName());
+            typeDto.setName_ru(type.getName_ru());
             typeDto.setPrice(type.getPrice());
-//            typeDto.setDisabled(type.getDisabled());
             typeDtoList.add(typeDto);
         }
         return typeDtoList;

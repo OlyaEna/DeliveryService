@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class TypeDto {
     private Long id;
     private String name;
+    private String name_ru;
     private double price;
 }
