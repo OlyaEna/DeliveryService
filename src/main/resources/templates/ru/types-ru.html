@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <header th:insert="~{fragments/head :: head}"></header>
+    <title th:text="#{coffee}"></title>
+</head>
+<body>
+<header th:insert="~{fragments/headerRu :: headerRu}"></header>
+
+<div th:if="${size==0}">
+    <p th:text="#{noCoffee}"></p>
+</div>
+<div class="container" th:if="${size>0}">
+    <h1 class="mt-4 mb-3">
+    </h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-9">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col" th:text="#{title}"></th>
+                            <th scope="col" th:text="#{price}"></th>
+                            <th scope="col" th:text="#{addToCart}"></th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="type:${typeDto}">
+                            <td th:text="${type.name_ru}"></td>
+                            <td th:text="${type.price}"></td>
+                            <td>
+                                <form th:action="@{/cart}" method="post">
+                                    <input type="hidden" th:value="${type.id}" name="id">
+                                    <li class="list-group-item">
+                                        <h10>
+                                            <input type="number" id="quantity" name="quantity"
+                                                   autocomplete="off" min="1" max="10" value="1">
+                                        </h10>
+                                        <button style="font-size:24px"><i class="fa fa-shopping-bag"></i></button>
+                                    </li>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-3">
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 class="card-title"> *Каждая <span class="l"
+                                                                                          th:text="${freeCup}"></span>
+                            чашка кофе бесплатно</h5>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 class="card-title"> *Стоимость доставки: <span class="l"
+                                                                                                       th:text="${delivery}"></span>
+                        </h5>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 class="card-title"> *Бесплатная доставка при заказе на сумму от
+                            <span class="l"
+                                  th:text="${freeDelivery}"></span>
+                        </h5>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

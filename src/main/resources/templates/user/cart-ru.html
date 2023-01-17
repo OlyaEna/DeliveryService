@@ -7,7 +7,7 @@
     <title th:text = "#{cart}"></title>
 </head>
 <body>
-<header th:insert="~{fragments/header :: header}"></header>
+<header th:insert="~{fragments/headerRu :: headerRu}"></header>
 <!-- Page Content -->
 <div class="container">
     <h1 class="mt-4 mb-3" th:text = "#{cart}">
@@ -27,7 +27,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="car:${cart}">
-                            <td th:text="${car.type.name}"></td>
+                            <td th:text="${car.type.name_ru}"></td>
                             <td th:text="${car.quantity}"></td>
                             <td th:text="${car.totalPrice}"></td>
                         </tr>

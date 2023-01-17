@@ -36,6 +36,7 @@
                     <tr th:each="item : ${selectedOrder.orderItems}">
                         <td th:text="${item.quantity}"></td>
                         <td th:text="${item.type.name}"></td>
+                        <td th:text="${item.type.name_ru}"></td>
                         <td th:text="${item.type.price}"></td>
                     </tr>
                 </table>

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <meta charset = "ISO-8859-1"/>
     <header th:insert="~{fragments/head :: head}"></header>
     <title th:text = "#{coffee}"></title>
 </head>
@@ -10,7 +8,7 @@
 <header th:insert="~{fragments/header :: header}"></header>
 
 <div th:if="${size==0}">
-    <p>У вас еще нет кофе в магазине!</p>
+    <p th:text = "#{noCoffee}" ></p>
 </div>
 <div class="container" th:if="${size>0}">
     <h1 class="mt-4 mb-3">
@@ -47,6 +45,30 @@
                         </tr>
                         </tbody>
                     </table>
+                </div>
+                    <div class="col-lg-3">
+                        <ul class="list-group">
+                                <li class="list-group-item"><h5 class="card-title"> *Every <span class="l"
+                                                                                              th:text="${freeCup}"></span>
+                                th coffee free</h5>
+                            </li>
+                        </ul>
+                        <br>
+                        <ul class="list-group">
+                            <li class="list-group-item"><h5 class="card-title"> *Standard shipping: <span class="l"
+                                                                                                           th:text="${delivery}"></span>
+                            </h5>
+                            </li>
+                        </ul>
+                        <br>
+                        <ul class="list-group">
+                            <li class="list-group-item"><h5 class="card-title"> *Free shipping on orders of
+                                <span class="l"
+                                      th:text="${freeDelivery}"></span>
+                            </h5>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

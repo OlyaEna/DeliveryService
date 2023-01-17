@@ -9,7 +9,7 @@
 <header th:insert="~{fragments/header :: header}"></header>
 <div class="container py-5">
     <div class="container"><h2 th:text = "#{orders}"></h2>
-        <span th:if="${orders.size() == 0}">В магазине еще нет заказов</span>
+        <span th:if="${orders.size() == 0}" th:text = "#{noOrders}"></span>
         <table sec:authorize="isAuthenticated()" th:if="${orders.size() > 0}"
                class="table table-hover">
             <thead class="thead-light">

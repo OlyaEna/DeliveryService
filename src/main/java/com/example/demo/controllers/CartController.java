@@ -84,6 +84,15 @@ public class CartController {
         return "user/cart";
     }
 
+    @GetMapping("/ru/cart")
+    public String getCartRu(Model model) {
+        model.addAttribute("cart", orderItems);
+        model.addAttribute("order", order);
+        model.addAttribute("size", orderItems.size());
+        model.addAttribute("deliveryCost", deliveryCost);
+        return "user/cart-ru";
+    }
+
 
     @GetMapping("/order")
     public String getOrderPage(Model model) {
