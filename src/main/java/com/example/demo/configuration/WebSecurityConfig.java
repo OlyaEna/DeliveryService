@@ -23,7 +23,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/ru/**", "/registration/**","/", "/order-details/**", "/order", "/locale/**", "/locale?Language=fr").permitAll()
+                        .requestMatchers("/ru/**", "/registration/**","/", "/order-details/**", "/order").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**", "/coffee", "/cart").hasRole("USER")
                 )
@@ -37,5 +37,6 @@ public class WebSecurityConfig {
                         .permitAll());
         return http.build();
     }
+
 
 }

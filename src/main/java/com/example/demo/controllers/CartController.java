@@ -48,7 +48,6 @@ public class CartController {
         Optional<Type> optionalType = typeService.get(id);
         type = optionalType.get();
 
-
         orderItem.setTotalPrice(type.getPrice() * quantity);
 
         orderItem.setQuantity(quantity);
@@ -56,7 +55,6 @@ public class CartController {
 
         Long idType = type.getId();
         boolean added = orderItems.stream().anyMatch(p -> p.getType().getId() == idType);
-
 
         if (!added) {
             orderItems.add(orderItem);

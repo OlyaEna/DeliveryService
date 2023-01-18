@@ -25,4 +25,9 @@ public class OrderItem {
     private Type type;
     private int quantity;
     private double totalPrice;
+
+    public OrderItem(Type type, int quantity) {
+        this.type = type;
+        this.quantity = quantity;
+    }
 }
