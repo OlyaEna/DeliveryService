@@ -25,13 +25,12 @@ public class Order {
     @CreationTimestamp
     private LocalDateTime order_date;
     @Column(name = "customer_name",length = 100)
-
-    @NotEmpty(message = "Not null")
-    @Size(min = 3, max = 50, message = "min size 3 symbols and max size 50 symbols")
+//    @NotEmpty(message = "Not null")
+//    @Size(min = 3, max = 50, message = "min size 3 symbols and max size 50 symbols")
     private String name;
     @Column(name = "delivery_address", length = 200)
-    @NotEmpty(message = "Not null")
-    @Size(min = 3, max = 50, message = "min size 3 symbols and max size 50 symbols")
+//    @NotEmpty(message = "Not null")
+//    @Size(min = 3, max = 50, message = "min size 3 symbols and max size 50 symbols")
     private String address;
     private double cost;
     @ManyToOne(fetch = FetchType.EAGER)

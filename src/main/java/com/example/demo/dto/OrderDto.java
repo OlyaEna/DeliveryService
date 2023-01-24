@@ -17,9 +17,11 @@ import java.util.List;
 @AllArgsConstructor
 public class OrderDto {
     private Long id;
-    @NotEmpty(message = "Address should not be empty")
+    @NotEmpty(message = "Not null")
+    @Size(min = 3, max = 50, message = "min size 3 symbols and max size 50 symbols")
     private String address;
-    @Size(min = 4, max = 20, message = "Name should have 5-20 characters")
+    @NotEmpty(message = "Not null")
+    @Size(min = 3, max = 50, message = "min size 3 symbols and max size 50 symbols")
     private String name;
     private double cost;
     private LocalDateTime order_date;

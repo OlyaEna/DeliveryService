@@ -25,6 +25,9 @@
                             <div sec:authorize="hasRole('ROLE_USER')">
                                 <th scope="col" th:text="#{addToCart}"></th>
                             </div>
+                            <div sec:authorize="isAnonymous()">
+                                <th scope="col" th:text="#{addToCart}"></th>
+                            </div>
                         </tr>
                         </thead>
                         <tbody>
@@ -38,6 +41,21 @@
                                         <li class="list-group-item">
                                             <h10>
                                                 <input type="number" id="quantity" name="quantity"
+                                                       autocomplete="off" min="1" max="10" value="1">
+                                            </h10>
+                                            <button style="font-size:24px"><i class="fa fa-shopping-bag"></i></button>
+                                        </li>
+                                    </form>
+                                </td>
+                            </div>
+
+                            <div sec:authorize="isAnonymous()">
+                                <td>
+                                    <form th:action="@{/cart}" method="post">
+                                        <input type="hidden" th:value="${type.id}" name="id">
+                                        <li class="list-group-item">
+                                            <h10>
+                                                <input type="number" id="quantityQ" name="quantity"
                                                        autocomplete="off" min="1" max="10" value="1">
                                             </h10>
                                             <button style="font-size:24px"><i class="fa fa-shopping-bag"></i></button>
