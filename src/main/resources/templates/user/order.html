@@ -10,6 +10,9 @@
 <header th:insert="~{fragments/header :: header}"></header>
 <div class="container">
     <div class="row col-md-8 offset-md-2">
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">error</div>
+        </div>
         <div class="card shadow-sm">
             <div class="card-header">
                 <h2 class="text-center" th:text = "#{order}"></h2>
