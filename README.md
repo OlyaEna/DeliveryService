@@ -50,3 +50,12 @@
 Используемые технологии:
 Java, Spring (Boot, MVC, Security), Hibernate, HTML, CSS, Maven, MySQL, Thymeleaf,
 Flyway, JUnit, Mockito.
+
+Главная страница: 
+- для администратора 
+![screenshot](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/mainAdmin.JPG)
+- для авторизированного пользователя (РУС)
+![screenshot](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/14.JPG)
+- для неавторизированного пользователя (EN)
+![screenshot](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/6.JPG)
+
