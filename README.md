@@ -51,3 +51,33 @@
 Java, Spring (Boot, MVC, Security), Hibernate, HTML, CSS, Maven, MySQL, Thymeleaf,
 Flyway, JUnit, Mockito.
 
+Главная страница:
+- для администратора (EN)
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/mainAdminEN.JPG)
+- для неавторизованного пользователя (РУС) 
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/mainPageNotAuthorizedRU.JPG)
+- для авторизованного пользователя (EN) 
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/mainPageAuthorizedEN.JPG)
+
+Корзина: 
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/cartEN.JPG)
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/cartRU.JPG)
+
+Заказы:
+- нет заказов
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/UserNoOrdersEN.JPG)
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/userNoOrdersRu.JPG)
+- все заказы на странице администратора (EN)
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/adminOrdersEN.JPG)
+- все заказы на странице пользователя (РУС)
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/ordersRU.JPG)
+- детали заказа (EN)
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/OrderDetailsEN.JPG)
+
+Логин: 
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/loginRU.JPG)
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/logoutEN.JPG)
+
+Валидация: 
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/validationRU.JPG)
+![image](https://github.com/OlyaEna/DeliveryService/blob/master/src/main/resources/static/images/registerValidRU.JPG)
