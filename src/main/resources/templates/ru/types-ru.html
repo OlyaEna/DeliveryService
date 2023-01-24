@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8"/>
@@ -24,7 +24,9 @@
                         <tr>
                             <th scope="col" th:text="#{title}"></th>
                             <th scope="col" th:text="#{price}"></th>
-                            <th scope="col" th:text="#{addToCart}"></th>
+                            <div sec:authorize="hasRole('ROLE_USER')">
+                                <th scope="col" th:text="#{addToCart}"></th>
+                            </div>
 
                         </tr>
                         </thead>
@@ -32,18 +34,20 @@
                         <tr th:each="type:${typeDto}">
                             <td th:text="${type.name_ru}"></td>
                             <td th:text="${type.price}"></td>
-                            <td>
-                                <form th:action="@{/cart}" method="post">
-                                    <input type="hidden" th:value="${type.id}" name="id">
-                                    <li class="list-group-item">
-                                        <h10>
-                                            <input type="number" id="quantity" name="quantity"
-                                                   autocomplete="off" min="1" max="10" value="1">
-                                        </h10>
-                                        <button style="font-size:24px"><i class="fa fa-shopping-bag"></i></button>
-                                    </li>
-                                </form>
-                            </td>
+                            <div sec:authorize="hasRole('ROLE_USER')">
+                                <td>
+                                    <form th:action="@{/cart}" method="post">
+                                        <input type="hidden" th:value="${type.id}" name="id">
+                                        <li class="list-group-item">
+                                            <h10>
+                                                <input type="number" id="quantity" name="quantity"
+                                                       autocomplete="off" min="1" max="10" value="1">
+                                            </h10>
+                                            <button style="font-size:24px"><i class="fa fa-shopping-bag"></i></button>
+                                        </li>
+                                    </form>
+                                </td>
+                            </div>
                         </tr>
                         </tbody>
                     </table>

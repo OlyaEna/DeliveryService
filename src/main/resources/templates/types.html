@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <header th:insert="~{fragments/head :: head}"></header>
-    <title th:text = "#{coffee}"></title>
+    <title th:text="#{coffee}"></title>
 </head>
 <body>
 <header th:insert="~{fragments/header :: header}"></header>
 
 <div th:if="${size==0}">
-    <p th:text = "#{noCoffee}" ></p>
+    <p th:text="#{noCoffee}"></p>
 </div>
 <div class="container" th:if="${size>0}">
     <h1 class="mt-4 mb-3">
@@ -20,59 +20,62 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col" th:text = "#{title}"></th>
-                            <th scope="col" th:text = "#{price}"></th>
-                            <th scope="col" th:text = "#{addToCart}"></th>
-
+                            <th scope="col" th:text="#{title}"></th>
+                            <th scope="col" th:text="#{price}"></th>
+                            <div sec:authorize="hasRole('ROLE_USER')">
+                                <th scope="col" th:text="#{addToCart}"></th>
+                            </div>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="type:${typeDto}">
                             <td th:text="${type.name}"></td>
                             <td th:text="${type.price}"></td>
-                            <td>
-                                <form th:action="@{/cart}" method="post">
-                                    <input type="hidden" th:value="${type.id}" name="id">
-                                    <li class="list-group-item">
-                                        <h10>
-                                            <input type="number" id="quantity" name="quantity"
-                                                               autocomplete="off" min="1" max="10" value="1">
-                                        </h10>
-                                        <button style="font-size:24px"><i class="fa fa-shopping-bag"></i></button>
-                                    </li>
-                                </form>
-                            </td>
+                            <div sec:authorize="hasRole('ROLE_USER')">
+                                <td>
+                                    <form th:action="@{/cart}" method="post">
+                                        <input type="hidden" th:value="${type.id}" name="id">
+                                        <li class="list-group-item">
+                                            <h10>
+                                                <input type="number" id="quantity" name="quantity"
+                                                       autocomplete="off" min="1" max="10" value="1">
+                                            </h10>
+                                            <button style="font-size:24px"><i class="fa fa-shopping-bag"></i></button>
+                                        </li>
+                                    </form>
+                                </td>
+                            </div>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                    <div class="col-lg-3">
-                        <ul class="list-group">
-                                <li class="list-group-item"><h5 class="card-title"> *Every <span class="l"
-                                                                                              th:text="${freeCup}"></span>
-                                th coffee free</h5>
-                            </li>
-                        </ul>
-                        <br>
-                        <ul class="list-group">
-                            <li class="list-group-item"><h5 class="card-title"> *Standard shipping: <span class="l"
-                                                                                                           th:text="${delivery}"></span>
-                            </h5>
-                            </li>
-                        </ul>
-                        <br>
-                        <ul class="list-group">
-                            <li class="list-group-item"><h5 class="card-title"> *Free shipping on orders of
-                                <span class="l"
-                                      th:text="${freeDelivery}"></span>
-                            </h5>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-lg-3">
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 class="card-title"> *Every <span class="l"
+                                                                                         th:text="${freeCup}"></span>
+                            th coffee free</h5>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 class="card-title"> *Standard shipping: <span class="l"
+                                                                                                      th:text="${delivery}"></span>
+                        </h5>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 class="card-title"> *Free shipping on orders of
+                            <span class="l"
+                                  th:text="${freeDelivery}"></span>
+                        </h5>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
